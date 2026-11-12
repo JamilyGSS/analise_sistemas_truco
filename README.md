@@ -1,6 +1,6 @@
 # Truco Paulista em Duplas — Casos de Uso e Implementação
 
-Este repositório contém a descrição e o diagrama de casos de uso e a implementação completa das regras de negócio de um jogo de **Truco Paulista** jogado em duplas.
+Este repositório contém a descrição, o diagrama de casos de uso e a implementação completa das regras de negócio de um jogo de **Truco Paulista** jogado em duplas.
 
 ## Sobre o Projeto
 
