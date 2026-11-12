@@ -4,7 +4,7 @@ Este repositório contém a descrição e o diagrama de casos de uso e a impleme
 
 ## Sobre o Projeto
 
-O objetivo do projeto é aplicar conceitos de **[Engenharia de Software]** na modelagem e construção de um jogo de cartas com regras dinâmicas, controle de turnos, definição de manilhas (vira) e sistema de pontuação e apostas.
+O objetivo do projeto é aplicar conceitos de **Engenharia de Software** na modelagem e construção de um jogo de cartas com regras dinâmicas, controle de turnos, definição de manilhas (vira) e sistema de pontuação e apostas.
 
 ### Principais Funcionalidades
 * **Modelagem UML:** Diagrama de casos de uso.
