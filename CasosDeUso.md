@@ -4,23 +4,25 @@ Jamily Gonçalves de Sales Souza - ra143048
 
 ## Truco Paulista de Duas Duplas - Casos de Uso
 ### UC-001 — Iniciar partida
-Objetivo: Permitir que os jogadores iniciem uma nova partida de Truco Paulista entre duas duplas.  
-Ator principal: Jogador. Atores secundários: Sistema.  
-Pré-condições:  
+**Objetivo:** Permitir que os jogadores iniciem uma nova partida de Truco Paulista entre duas duplas.  
+**Ator principal:** Jogador. Atores secundários: Sistema.  
+**Pré-condições:**  
 - O sistema deve estar disponível.  
-- Os quatro jogadores devem estar definidos para a partida.  
-Pós-condições:  
+- Os quatro jogadores devem estar definidos para a partida.
+  
+**Pós-condições:**
 - A partida é criada e fica pronta para ser iniciada.  
 - O estado inicial da partida é registrado.  
-Gatilho: Um jogador solicita o início de uma nova partida.
-Fluxo principal:
-Jogador solicita iniciar uma partida.
-Sistema verifica se existem quatro jogadores disponíveis.
-Sistema verifica se as duplas foram definidas.
-Sistema cria a partida.
-Sistema inicializa o placar das duas duplas em zero.
-Sistema inicia a preparação para a primeira mão.
-Fluxos alternativos:
+**Gatilho:** Um jogador solicita o início de uma nova partida.  
+**Fluxo principal:**  
+- Jogador solicita iniciar uma partida.
+- Sistema verifica se existem quatro jogadores disponíveis.
+- Sistema verifica se as duplas foram definidas.
+- Sistema cria a partida.
+- Sistema inicializa o placar das duas duplas em zero.
+- Sistema inicia a preparação para a primeira mão.
+  
+**Fluxos alternativos:**  
 A1. (Jogadores insuficientes) → Sistema informa que são necessários quatro jogadores e aguarda a definição dos participantes.
 A2. (Duplas não definidas) → Sistema solicita que as duplas sejam formadas antes de continuar.
 Exceções:
