@@ -12,8 +12,10 @@ Jamily Gonçalves de Sales Souza - ra143048
   
 **Pós-condições:**
 - A partida é criada e fica pronta para ser iniciada.  
-- O estado inicial da partida é registrado.  
-**Gatilho:** Um jogador solicita o início de uma nova partida.  
+- O estado inicial da partida é registrado.
+  
+**Gatilho:** Um jogador solicita o início de uma nova partida.
+  
 **Fluxo principal:**  
 - Jogador solicita iniciar uma partida.
 - Sistema verifica se existem quatro jogadores disponíveis.
@@ -23,10 +25,12 @@ Jamily Gonçalves de Sales Souza - ra143048
 - Sistema inicia a preparação para a primeira mão.
   
 **Fluxos alternativos:**  
-A1. (Jogadores insuficientes) → Sistema informa que são necessários quatro jogadores e aguarda a definição dos participantes.
-A2. (Duplas não definidas) → Sistema solicita que as duplas sejam formadas antes de continuar.
-Exceções:
-E1. (Falha ao criar partida) → Sistema informa que não foi possível iniciar a partida.
+**A1. (Jogadores insuficientes)** → Sistema informa que são necessários quatro jogadores e aguarda a definição dos participantes.  
+**A2. (Duplas não definidas)** → Sistema solicita que as duplas sejam formadas antes de continuar.
+  
+**Exceções:**  
+**E1. (Falha ao criar partida)** → Sistema informa que não foi possível iniciar a partida.
+  
 UC-002 — Formar duplas
 Objetivo: Permitir a definição dos quatro jogadores em duas duplas adversárias.
 Ator principal: Jogador. Atores secundários: Sistema.
