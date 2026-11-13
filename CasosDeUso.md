@@ -4,8 +4,10 @@ Jamily Gonçalves de Sales Souza - ra143048
 
 ## Truco Paulista de Duas Duplas - Casos de Uso
 ### UC-001 — Iniciar partida
-**Objetivo:** Permitir que os jogadores iniciem uma nova partida de Truco Paulista entre duas duplas.  
-**Ator principal:** Jogador. Atores secundários: Sistema.  
+**Objetivo:** Permitir que os jogadores iniciem uma nova partida de Truco Paulista entre duas duplas.
+  
+**Ator principal:** Jogador. Atores secundários: Sistema.
+  
 **Pré-condições:**  
 - O sistema deve estar disponível.  
 - Os quatro jogadores devem estar definidos para a partida.
@@ -31,29 +33,41 @@ Jamily Gonçalves de Sales Souza - ra143048
 **Exceções:**  
 **E1. (Falha ao criar partida)** → Sistema informa que não foi possível iniciar a partida.
   
-UC-002 — Formar duplas
-Objetivo: Permitir a definição dos quatro jogadores em duas duplas adversárias.
-Ator principal: Jogador. Atores secundários: Sistema.
-Pré-condições:
-O sistema deve estar disponível.
-Os quatro participantes devem estar identificados.
-Pós-condições:
-As duas duplas ficam registradas para a partida.
-Cada jogador fica associado à sua respectiva dupla.
-Gatilho: Um jogador solicita a formação das duplas.
-Fluxo principal:
-Jogador acessa a configuração das duplas.
-Sistema apresenta os quatro participantes disponíveis.
-Jogador seleciona os integrantes da primeira dupla.
-Jogador seleciona os integrantes da segunda dupla.
-Sistema verifica se cada dupla possui dois jogadores distintos.
-Sistema registra as duplas.
-Sistema apresenta a composição final das equipes.
-Fluxos alternativos:
-A1. (Jogador repetido) → Sistema informa que um mesmo jogador não pode pertencer às duas duplas e solicita uma nova seleção.
-A2. (Dupla incompleta) → Sistema solicita que todos os integrantes sejam definidos.
-Exceções:
-E1. (Falha ao registrar duplas) → Sistema informa que não foi possível salvar a configuração.
+### UC-002 — Formar duplas
+
+**Objetivo:** Permitir a definição dos quatro jogadores em duas duplas adversárias.
+
+**Ator principal:** Jogador. Atores secundários: Sistema.
+
+**Pré-condições:**
+
+- O sistema deve estar disponível.
+- Os quatro participantes devem estar identificados.
+
+**Pós-condições:**
+
+- As duas duplas ficam registradas para a partida.
+- Cada jogador fica associado à sua respectiva dupla.
+
+**Gatilho:** Um jogador solicita a formação das duplas.
+
+**Fluxo principal:**
+
+- Jogador acessa a configuração das duplas.
+- Sistema apresenta os quatro participantes disponíveis.
+- Jogador seleciona os integrantes da primeira dupla.
+- Jogador seleciona os integrantes da segunda dupla.
+- Sistema verifica se cada dupla possui dois jogadores distintos.
+- Sistema registra as duplas.
+- Sistema apresenta a composição final das equipes.
+
+**Fluxos alternativos:**  
+**A1. (Jogador repetido)** → Sistema informa que um mesmo jogador não pode pertencer às duas duplas e solicita uma nova seleção.\
+**A2. (Dupla incompleta)** → Sistema solicita que todos os integrantes sejam definidos.
+
+**Exceções:**  
+**E1. (Falha ao registrar duplas)** → Sistema informa que não foi possível salvar a configuração.
+  
 UC-003 — Distribuir cartas
 Objetivo: Distribuir três cartas para cada jogador no início de cada mão.
 Ator principal: Sistema. Atores secundários: Jogador.
