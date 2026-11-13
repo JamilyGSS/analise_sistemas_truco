@@ -1,17 +1,17 @@
 ## Integrantes
-Giovana Ferreira Waterkemper- ra143844
+Giovana Ferreira Waterkemper- ra143844  
 Jamily Gonçalves de Sales Souza - ra143048  
 
 ## Truco Paulista de Duas Duplas - Casos de Uso
-UC-001 — Iniciar partida
-Objetivo: Permitir que os jogadores iniciem uma nova partida de Truco Paulista entre duas duplas.
-Ator principal: Jogador. Atores secundários: Sistema.
-Pré-condições:
-O sistema deve estar disponível.
-Os quatro jogadores devem estar definidos para a partida.
-Pós-condições:
-A partida é criada e fica pronta para ser iniciada.
-O estado inicial da partida é registrado.
+### UC-001 — Iniciar partida
+Objetivo: Permitir que os jogadores iniciem uma nova partida de Truco Paulista entre duas duplas.  
+Ator principal: Jogador. Atores secundários: Sistema.  
+Pré-condições:  
+- O sistema deve estar disponível.  
+- Os quatro jogadores devem estar definidos para a partida.  
+Pós-condições:  
+- A partida é criada e fica pronta para ser iniciada.  
+- O estado inicial da partida é registrado.  
 Gatilho: Um jogador solicita o início de uma nova partida.
 Fluxo principal:
 Jogador solicita iniciar uma partida.
