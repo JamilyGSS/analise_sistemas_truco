@@ -1,0 +1,172 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Truco Paulista</title>
+<style>
+:root{--ink:#f5ecd7;--gold:#e0b04a;--felt:#14603a;--felt2:#0b3b24;--cw:clamp(46px,13vw,78px);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html,body{height:100%;margin:0}[hidden]{display:none!important}
+body{background:#1b120c;color:var(--ink);font:15px/1.35 system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden}
+button{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:8px 12px;background:#4a3322;color:var(--ink)}button:hover{background:#5d4230}
+header{display:flex;align-items:center;gap:8px;padding:6px 10px;background:#0007;flex-wrap:wrap;justify-content:center}
+.sc{display:flex;gap:14px;align-items:center}.team{text-align:center;min-width:84px}.team b{font:700 30px/1 Georgia,serif}.team small{display:block;font-size:11px;opacity:.85}
+.t0 b{color:#8fe3a0}.t1 b{color:#ff9a8c}.mid{text-align:center}
+.chip{background:var(--gold);color:#2a1c12;border-radius:99px;padding:3px 10px;font-weight:700;font-size:13px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#fff3;margin:4px 3px 0}.d0{background:#8fe3a0}.d1{background:#ff7a68}.dt{background:#aaa}
+#vira{display:flex;align-items:center;gap:6px;font-size:11px}.tools button{padding:6px 9px;margin-left:3px}
+main{flex:1;min-height:0;margin:6px;border-radius:26px;border:8px solid #5a3a1f;box-shadow:inset 0 0 70px #000b;background:radial-gradient(ellipse at center,var(--felt),var(--felt2));display:flex;flex-direction:column;justify-content:space-between;position:relative;padding:6px}
+.seat{text-align:center;position:relative}.seat .nm{display:inline-block;font-size:12px;padding:2px 10px;border-radius:99px;background:#0008;border:2px solid transparent}
+.seat.s0 .nm{border-color:#8fe3a0}.seat.s1 .nm{border-color:#ff9a8c}.seat.turn .nm{background:var(--gold);color:#2a1c12;font-weight:700;box-shadow:0 0 14px var(--gold)}
+.bub{position:absolute;left:50%;top:-6px;transform:translate(-50%,-100%);background:#fff;color:#222;border-radius:12px;padding:3px 10px;font-weight:700;opacity:0;transition:.2s;white-space:nowrap;z-index:5}.bub.on{opacity:1}
+.row{display:flex;align-items:center;justify-content:space-between;flex:1;min-height:0}
+.bk{display:flex}.bk .c{--cw:30px;margin-left:-14px}.bk .c:first-child{margin-left:0}.side .bk{flex-direction:column}.side .bk .c{margin:-26px 0 0}.side .bk .c:first-child{margin:0}
+.center{display:grid;grid:auto auto auto/auto auto auto;gap:4px;place-items:center;position:relative}
+.slot{width:var(--cw);height:calc(var(--cw)*1.45);display:flex;flex-direction:column;align-items:center}.slot small{font-size:10px;opacity:.8}
+#p2{grid-area:1/2}#p1{grid-area:2/1}#p3{grid-area:2/3}#p0{grid-area:3/2}
+#bn{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%) scale(.9);background:#000b;border:2px solid var(--gold);border-radius:14px;padding:8px 16px;font-weight:700;text-align:center;opacity:0;transition:.25s;pointer-events:none;z-index:6;max-width:90%}#bn.on{opacity:1;transform:translate(-50%,-50%)}
+.c{width:var(--cw);height:calc(var(--cw)*1.45);flex:none;border-radius:8px;background:linear-gradient(145deg,#fffdf6,#efe6d0);color:#111;position:relative;box-shadow:0 2px 6px #0009,inset 0 0 0 1px #0002;font:700 calc(var(--cw)*.27)/1 Georgia,serif;user-select:none}
+.c.r{color:#b3261e}.c i{position:absolute;font-style:normal;text-align:center}.c .a{top:5px;left:5px}.c .b{bottom:5px;right:5px;transform:rotate(180deg)}
+.c .m{inset:0;display:flex;align-items:center;justify-content:center;font-size:calc(var(--cw)*.62)}.c.man{box-shadow:0 0 0 2px var(--gold),0 0 12px #e0b04abb}
+.back{background:repeating-linear-gradient(45deg,#7a1f2b 0 6px,#5c1520 6px 12px);border:3px solid #f5ecd7}.sm{--cw:38px}
+.drop{animation:drop .35s ease-out}@keyframes drop{from{transform:translateY(60px) scale(1.2) rotate(-8deg);opacity:0}}
+.mine{display:flex;justify-content:center;min-height:calc(var(--cw)*1.5)}.mine .c{margin:0 -4px;cursor:pointer;transition:transform .15s}.mine .c:nth-child(1){transform:rotate(-5deg)}.mine .c:nth-child(3){transform:rotate(5deg)}
+.mine .c:hover{transform:translateY(-14px)}.mine.off .c{cursor:default;filter:brightness(.8)}.mine.off .c:hover{transform:none}
+.bar{display:flex;gap:8px;justify-content:center;padding:6px 10px 10px;flex-wrap:wrap;position:relative}
+#bt{background:#b3261e;font-weight:700;letter-spacing:.5px}#bt.x{opacity:.45}#bc.on{background:var(--gold);color:#2a1c12}
+#sg{position:absolute;bottom:100%;background:#2a1c12;border-radius:12px;padding:8px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:94vw;z-index:8}
+.dr{position:fixed;top:0;bottom:0;right:0;width:min(330px,88vw);background:#2a1c12f2;padding:56px 14px 14px;overflow:auto;transform:translateX(105%);transition:.25s;z-index:20;box-shadow:-8px 0 24px #0008}.dr.open{transform:none}.dr h3{margin:0 0 8px;color:var(--gold)}.dr p{margin:0 0 8px;font-size:14px}
+.lg{border-bottom:1px solid #fff2;padding:4px 0;font-size:13px}.lg em{opacity:.6;font-style:normal;font-size:11px}
+.ov{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000a;z-index:30;padding:14px}
+.ov.lite{background:#0005;z-index:15}
+.box{background:#2a1c12;border:2px solid var(--gold);border-radius:18px;padding:18px;max-width:420px;width:100%}.box h2{margin:0 0 8px;color:var(--gold)}
+.box .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.ok{background:#1f7a46}.no{background:#a12a20}
+.pl{display:flex;gap:6px;margin:6px 0}.pl input,.pl select{font:inherit;padding:7px;border-radius:8px;border:1px solid #fff4;background:#1b120c;color:var(--ink)}.pl input{flex:1;min-width:0}
+#sm{color:#ff9a8c;min-height:20px;font-size:13px}
+#toast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%);background:#000d;padding:8px 14px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:40;max-width:90vw;text-align:center}#toast.on{opacity:1}
+.noanim *{animation:none!important;transition:none!important}
+</style></head><body>
+<header>
+<div class="sc"><div class="team t0"><small id="n0"></small><b id="s0">0</b></div>
+<div class="mid"><span class="chip" id="val">Vale 1</span><div id="dots"></div></div>
+<div class="team t1"><small id="n1"></small><b id="s1">0</b></div></div>
+<div id="vira"></div>
+<div class="tools"><button onclick="drawer('ph')" title="Histórico">📜</button><button onclick="drawer('pr')" title="Regras da jogada">❓</button><button id="bs" onclick="snd=!snd;this.textContent=snd?'🔊':'🔇'" title="Som">🔊</button><button onclick="anim=!anim;document.body.classList.toggle('noanim',!anim);toast(anim?'Animações ativadas':'Animações reduzidas')" title="Animações">✨</button><button onclick="drop()" title="Simular queda de conexão">📡</button></div>
+</header>
+<main>
+<div class="seat s0" id="st2"><div class="bub" id="b2"></div><span class="nm" id="l2"></span><div class="bk" id="h2" style="justify-content:center;margin-top:4px"></div></div>
+<div class="row"><div class="seat s1 side" id="st1"><div class="bub" id="b1"></div><span class="nm" id="l1"></span><div class="bk" id="h1"></div></div>
+<div class="center"><div class="slot" id="p2"></div><div class="slot" id="p1"></div><div class="slot" id="p3"></div><div class="slot" id="p0"></div></div>
+<div class="seat s1 side" id="st3"><div class="bub" id="b3"></div><span class="nm" id="l3"></span><div class="bk" id="h3"></div></div></div>
+<div class="seat s0" id="st0"><div class="bub" id="b0"></div><div class="mine" id="h0"></div><span class="nm" id="l0"></span></div>
+<div id="bn"></div>
+</main>
+<div class="bar"><div id="sg" hidden></div><button id="bt" onclick="trucoBtn()">TRUCO!</button><button id="bc" onclick="coverBtn()">🂠 Cobrir carta</button><button onclick="$('#sg').hidden=!$('#sg').hidden">🤫 Sinais</button></div>
+<aside class="dr" id="pr"><h3>Regras desta jogada</h3><div id="prb"></div></aside>
+<aside class="dr" id="ph"><h3>Histórico</h3><div id="phb"></div></aside>
+<div class="ov lite" id="modal" hidden><div class="box"><h2 id="mt"></h2><div id="mb"></div><div class="acts" id="mbtn"></div></div></div>
+<div class="ov" id="conn" hidden><div class="box"><h2>📡 Conexão perdida</h2><p id="cp">A partida foi pausada e o estado está guardado.</p><div class="acts"><button class="ok" onclick="reconnect()">Reconectar</button></div></div></div>
+<div class="ov" id="setup"><div class="box"><h2>♠ Truco Paulista</h2><p style="margin:0 0 6px;font-size:14px">Forme as duplas: dois jogadores em cada uma. O primeiro da Dupla 1 é você.</p>
+<div class="pl"><input value="Você" maxlength="12"><select><option value="0">Dupla 1</option><option value="1">Dupla 2</option></select></div>
+<div class="pl"><input value="Bia" maxlength="12"><select><option value="0">Dupla 1</option><option value="1">Dupla 2</option></select></div>
+<div class="pl"><input value="Caio" maxlength="12"><select><option value="0">Dupla 1</option><option value="1" selected>Dupla 2</option></select></div>
+<div class="pl"><input value="Dani" maxlength="12"><select><option value="0">Dupla 1</option><option value="1" selected>Dupla 2</option></select></div>
+<div id="sm"></div><div class="acts"><button class="ok" onclick="iniciar()">Iniciar partida</button></div></div></div>
+<div id="toast"></div>
+<script>
+const $=s=>document.querySelector(s),SU=['♦','♠','♥','♣'],RK=['4','5','6','7','Q','J','K','A','2','3'],NX={1:3,3:6,6:9,9:12},LB={3:'Truco',6:'Seis',9:'Nove',12:'Doze'};
+let G,paused=0,resumeFn,snd=1,anim=1,AC,detail=0;
+const nm=c=>RK[c.r]+SU[c.s],P=c=>c.r==G.man?20+c.s:c.r,tn=t=>G.tname[t];
+const sleep=async ms=>{await new Promise(r=>setTimeout(r,anim?ms:ms/4));while(paused)await new Promise(r=>resumeFn=r)};
+function beep(f=440,d=.08){if(!snd)return;try{AC=AC||new AudioContext();const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=f;g.gain.value=.04;o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+d)}catch(e){}}
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),2600)}
+function banner(t,ms=1800){const e=$('#bn');e.textContent=t;e.classList.add('on');clearTimeout(banner.t);banner.t=setTimeout(()=>e.classList.remove('on'),ms)}
+function say(i,t){const e=$('#b'+i);e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1700)}
+function log(t){G.log.push([G.hn,t]);renderLog()}
+function drawer(id){const o=$('#'+id).classList.contains('open');document.querySelectorAll('.dr').forEach(d=>d.classList.remove('open'));if(!o){$('#'+id).classList.add('open');renderLog();renderRules()}}
+function renderLog(){if(!$('#ph').classList.contains('open'))return;$('#phb').innerHTML=G&&G.log.length?G.log.slice().reverse().map(([h,t])=>`<div class="lg"><em>Mão ${h}</em> ${t}</div>`).join(''):'<p>Ainda não há ações registradas além do início da partida.</p>'}
+function renderRules(){if(!$('#pr').classList.contains('open'))return;const g=G,L=[];
+if(!g||!g.vira)L.push('Baralho de 40 cartas (sem 8, 9 e 10). Vence a mão quem fizer 2 de 3 rodadas; 12 pontos vencem a partida.');
+else{L.push(`<b>Vira ${nm(g.vira)}</b>: as manilhas são os <b>${RK[g.man]}</b>, em ordem ♦ &lt; ♠ &lt; ♥ &lt; ♣. Depois: 3, 2, A, K, J, Q, 7, 6, 5, 4.`);
+L.push(`<b>Rodada ${Math.min(g.round+1,3)} de 3.</b> `+(g.round==0?'Não é permitido jogar carta coberta na 1ª rodada.':'Você pode jogar uma carta coberta (ela perde para qualquer carta aberta).'));
+if(g.round==1)L.push('Se a 1ª rodada empatou, quem vencer a 2ª leva a mão. Se você venceu a 1ª e a 2ª empatar, a mão é sua.');
+if(g.round==2)L.push('Na 3ª rodada, se empatar, vence quem ganhou a 1ª. Se tudo empatar, ninguém pontua.');
+L.push(`<b>Mão vale ${g.val}.</b> Sequência: truco (3) → 6 → 9 → 12. Quem aceita pode aumentar depois; quem acabou de pedir, não. Correr dá à outra dupla o valor vigente antes do pedido.`);
+if(g.fer)L.push('<b>Mão de Ferro:</b> as duas duplas têm 11. Cartas jogadas no escuro, sem truco ou aumento. Quem vencer a mão vence a partida.');
+else if(g.onze>=0)L.push(`<b>Mão de Onze:</b> ${tn(g.onze)} tem 11 pontos. A dupla vê as cartas um do outro e decide jogar (vale 3) ou correr (1 ponto aos adversários). Sem truco.`);}
+if(detail)L.push('<b>Detalhes:</b> a dupla que vence uma rodada começa a próxima. Em empate de cartas da mesma dupla, vence essa dupla. O distribuidor gira a cada mão e começa quem está logo depois dele. Com 12 pontos a partida acaba.');
+$('#prb').innerHTML=L.map(x=>`<p>${x}</p>`).join('')+(detail?'':'<button onclick="detail=1;renderRules()">Explicação completa</button>')}
+const card=(c,hid,cls='',at='')=>hid?`<div class="c back ${cls}" ${at}></div>`:`<div class="c ${c.s%2?'':'r'} ${c.r==G.man?'man':''} ${cls}" ${at}><i class="a">${RK[c.r]}<br>${SU[c.s]}</i><i class="m">${SU[c.s]}</i><i class="b">${RK[c.r]}<br>${SU[c.s]}</i></div>`;
+function setSlot(i,h){const e=$('#p'+i);if(e.dataset.h!==h){e.dataset.h=h;e.innerHTML=h}}
+function render(){const g=G;
+$('#n0').textContent='Nós · '+g.tname[0];$('#n1').textContent='Eles · '+g.tname[1];$('#s0').textContent=g.score[0];$('#s1').textContent=g.score[1];
+$('#val').textContent='Vale '+g.val+(g.fer?' · Mão de Ferro':g.onze>=0?' · Mão de Onze':'');
+$('#dots').innerHTML=[0,1,2].map(i=>`<span class="dot ${g.res[i]===undefined?'':g.res[i]=='t'?'dt':'d'+g.res[i]}"></span>`).join('');
+$('#vira').innerHTML=g.vira?`<span>Vira</span>${card(g.vira,0,'sm')}<span>Manilha<br><b>${RK[g.man]}</b></span>`:'';
+for(let i=0;i<4;i++){$('#l'+i).textContent=g.names[i]+(i==g.dealer?' · dá as cartas':'');$('#st'+i).classList.toggle('turn',g.turn==i);
+if(i)$('#h'+i).innerHTML=g.hands[i].map(()=>card(0,1)).join('');
+setSlot(i,g.table[i]?card(g.table[i].c,g.table[i].cv,'drop')+(g.table[i].cv?'<small>coberta</small>':''):'')}
+const m=$('#h0');m.innerHTML=g.hands[0].map((c,k)=>card(c,g.fer,'',`onclick="pick(${k})"`)).join('');m.classList.toggle('off',!g.wait);
+$('#bt').textContent=g.val<12?LB[NX[g.val]].toUpperCase()+'!':'VALE 12';$('#bt').classList.toggle('x',!g.wait||!canRaise(0));$('#bc').classList.toggle('on',!!g.cover);renderRules()}
+function modal(t,b,btns){return new Promise(r=>{$('#mt').textContent=t;$('#mb').innerHTML=b;const a=$('#mbtn');a.innerHTML='';btns.forEach(([l,v,c])=>{const e=document.createElement('button');e.textContent=l;e.className=c||'';e.onclick=()=>{$('#modal').hidden=true;r(v)};a.append(e)});$('#modal').hidden=false})}
+function iniciar(){const R=[...document.querySelectorAll('.pl')],n=R.map(r=>r.querySelector('input').value.replace(/[<>&"]/g,'').trim()),t=R.map(r=>+r.querySelector('select').value),er=m=>$('#sm').textContent=m;
+if(n.some(x=>!x))return er('São necessários quatro jogadores: preencha todos os nomes.');
+if(new Set(n.map(x=>x.toLowerCase())).size<4)return er('Um mesmo jogador não pode estar duas vezes. Use nomes diferentes.');
+if(t.filter(x=>!x).length!=2)return er('Cada dupla precisa ter exatamente dois jogadores.');
+const a=n.filter((_,i)=>!t[i]),b=n.filter((_,i)=>t[i]);
+G={names:[a[0],b[0],a[1],b[1]],tname:[a.join(' & '),b.join(' & ')],score:[0,0],dealer:Math.floor(Math.random()*4),hn:0,log:[],hands:[[],[],[],[]],table:[null,null,null,null],res:[],val:1,onze:-1,round:0,turn:-1};
+$('#setup').hidden=true;log(`Partida iniciada: ${tn(0)} × ${tn(1)}. Placar 0 × 0.`);run()}
+async function run(){const g=G;while(Math.max(...g.score)<12)await playHand();await endMatch()}
+const canRaise=t=>!G.over&&!G.fer&&G.onze<0&&G.val<12&&G.lastRaiser!==t;
+const hs=cs=>{const s=cs.map(c=>{const p=P(c);return p>=20?12+p-20:p}).sort((a,b)=>b-a);return (s[0]||0)+.6*(s[1]||0)+.3*(s[2]||0)};
+async function playHand(){const g=G;g.hn++;
+const d=[];for(let s=0;s<4;s++)for(let r=0;r<10;r++)d.push({s,r});for(let i=39;i>0;i--){const j=Math.random()*(i+1)|0;[d[i],d[j]]=[d[j],d[i]]}
+g.hands=[0,1,2,3].map(i=>d.slice(i*3,i*3+3));g.vira=d[12];g.man=(g.vira.r+1)%10;
+g.table=[null,null,null,null];g.res=[];g.round=0;g.val=1;g.lastRaiser=-1;g.over=null;g.cover=0;g.wait=null;g.turn=-1;
+g.fer=g.score[0]==11&&g.score[1]==11;g.onze=!g.fer&&(g.score[0]==11||g.score[1]==11)?(g.score[0]==11?0:1):-1;
+log(`Cartas distribuídas por ${g.names[g.dealer]}. Vira ${nm(g.vira)}, manilha ${RK[g.man]}.`);render();beep(330);
+banner(g.fer?'MÃO DE FERRO · cartas no escuro':g.onze>=0?'MÃO DE ONZE':`Mão ${g.hn} · Vira ${nm(g.vira)} · manilha ${RK[g.man]}`,2200);await sleep(1800);
+if(!g.fer&&g.hands[2].some(c=>c.r==g.man)&&Math.random()<.5){say(2,'😉');toast('Seu parceiro piscou: tem manilha!')}
+if(g.onze>=0){g.val=3;const t=g.onze,pa=g.hands[t],ok=t==0?await modal('Mão de Onze','Sua dupla tem 11. Veja as cartas do seu parceiro e decida:<div style="display:flex;gap:6px;margin-top:8px">'+g.hands[2].map(c=>card(c,0)).join('')+'</div><p style="font-size:13px">Jogar vale 3 pontos. Correr dá 1 ponto aos adversários.</p>',[['Jogar','j','ok'],['Correr','c','no']]):(hs(g.hands[1])+hs(g.hands[3])+Math.random()*6>20?'j':'c');
+if(ok=='c'){g.over={w:1-t,pts:1};log(`${tn(t)} correu da Mão de Onze.`)}else log(`${tn(t)} decidiu jogar a Mão de Onze (vale 3).`)}
+if(g.fer)log('Mão de Ferro: ninguém vê as próprias cartas e não há truco.');
+let L=(g.dealer+1)%4;
+for(g.round=0;g.round<3&&!g.over;g.round++){g.table=[null,null,null,null];render();const ord=[0,1,2,3].map(k=>(L+k)%4);
+for(const s of ord){if(g.over)break;g.turn=s;render();await sleep(500);let pl;
+if(s){if(canRaise(s%2)&&Math.random()<(hs(g.hands[s])>16?.3:hs(g.hands[s])>13?.1:.03)){await bet(s%2,s);if(g.over)break;await sleep(400)}pl=botPlay(s)}
+else{pl=await humanTurn();if(g.over)break}
+g.hands[s]=g.hands[s].filter(x=>x!==pl.c);g.table[s]=pl;g.turn=-1;g.cover=0;beep(pl.cv?260:520,.06);
+log(`${g.names[s]} jogou ${pl.cv?'uma carta coberta':nm(pl.c)}.`);render();await sleep(650)}
+if(g.over)break;await sleep(500);const w=roundWin(ord);g.res.push(w.t);
+if(w.t=='t'){log(`Rodada ${g.round+1} empatada.`);banner('Rodada empatada')}else{L=w.s;log(`Rodada ${g.round+1}: ${g.names[w.s]} venceu para ${tn(w.t)}.`);banner(`${g.names[w.s]} levou a rodada`)}
+render();await sleep(1400);const dc=decide();if(dc!==null)g.over={w:dc=='x'?-1:dc,pts:g.val}}
+g.turn=-1;const o=g.over;
+if(o.w>=0){g.score[o.w]=Math.min(12,g.score[o.w]+o.pts);log(`${tn(o.w)} ganhou ${o.pts} ponto${o.pts>1?'s':''}. Placar ${g.score[0]} × ${g.score[1]}.`);banner(`${tn(o.w)} +${o.pts}`,2000);beep(740,.2)}
+else{log('Mão empatada: ninguém pontua.');banner('Mão empatada')}
+render();await sleep(2200);g.dealer=(g.dealer+1)%4}
+function decide(){const[a,b,c]=G.res;if(G.res.length<2)return null;
+if(a!='t'&&a==b)return a;if(a!='t'&&b=='t')return a;if(a=='t'&&b!='t')return b;if(G.res.length==2)return null;
+if(c!='t')return c;return a!='t'?a:'x'}
+function roundWin(ord){let top=-2,ws=[];ord.forEach(s=>{const x=G.table[s],p=x.cv?-1:P(x.c);if(p>top){top=p;ws=[s]}else if(p==top)ws.push(s)});
+const t=[...new Set(ws.map(s=>s%2))];return t.length>1?{t:'t'}:{t:t[0],s:ws[0]}}
+function botPlay(s){const h=G.hands[s].slice().sort((a,b)=>P(a)-P(b));if(G.fer)return{c:h[Math.random()*h.length|0],cv:0};
+const T=G.table.map((x,i)=>x&&{p:x.cv?-1:P(x.c),i}).filter(Boolean),m=Math.max(-1,...T.map(x=>x.p));let c;
+if(!T.length)c=G.round?h[h.length-1]:h[h.length>>1];else{const b=T.reduce((a,x)=>x.p>a.p?x:a);c=b.i%2==s%2?h[0]:(h.find(x=>P(x)>b.p)||h[0])}
+return{c,cv:G.round>0&&T.length>0&&P(c)<m&&Math.random()<.4}}
+function humanTurn(){const g=G;return new Promise(async res=>{while(1){const a=await new Promise(r=>{g.wait=r;render()});g.wait=null;
+if(a.truco){await bet(0,0);render();if(g.over)return res()}else{render();return res({c:g.hands[0][a.k],cv:a.cv})}}})}
+function pick(k){if(!G||!G.wait)return toast('Não é sua vez de jogar.');if(G.cover&&(G.round==0||G.fer))return toast('Carta coberta não está disponível agora.');G.wait({k,cv:!!G.cover})}
+function coverBtn(){if(G.round==0||G.fer)return toast('Carta coberta não está disponível na 1ª rodada nem na Mão de Ferro.');G.cover=!G.cover;render()}
+function trucoBtn(){const g=G;if(!g.wait)return toast('Você só pode pedir aumento na sua vez.');if(g.fer||g.onze>=0)return toast('Truco não é permitido nesta mão.');if(g.val>=12)return toast('A mão já vale 12, o valor máximo.');if(g.lastRaiser===0)return toast('Sua dupla fez o último pedido. Aguarde os adversários.');g.wait({truco:1})}
+async function bet(t,seat){const g=G;let nv=NX[g.val];
+while(1){const o=1-t,sp=t==0?seat:(g.turn%2==1?g.turn:1);say(sp,LB[nv]+'!');beep(200,.3);log(`${tn(t)} pediu ${LB[nv].toLowerCase()} (${nv}).`);banner(LB[nv].toUpperCase()+'!',1500);await sleep(900);
+const d=o==0?await modal('🗣️ '+LB[nv]+'!',`${tn(t)} pediu ${LB[nv].toLowerCase()}: a mão passa a valer ${nv}. Se correr, os adversários ganham ${g.val}.`,[[`Aceitar (${nv})`,'acc','ok'],...(nv<12?[['Aumentar para '+NX[nv],'rs']]:[]),['Correr','run','no']]):botAns(nv);
+if(d=='run'){g.over={w:t,pts:g.val};log(`${tn(o)} correu. ${tn(t)} ganha ${g.val}.`);say(o==0?0:1,'Corro!');render();return}
+if(d=='acc'){g.val=nv;g.lastRaiser=t;log(`${tn(o)} aceitou. Mão vale ${nv}.`);say(o==0?0:1,'Quero!');render();await sleep(600);return}
+g.val=nv;log(`${tn(o)} aceitou e aumentou.`);t=o;nv=NX[nv];g.lastRaiser=t;render()}}
+function botAns(nv){const h=Math.max(hs(G.hands[1]),hs(G.hands[3]))+Math.random()*3-1.5,th=8+nv*.6;
+return h>th+3&&nv<12&&Math.random()<.5?'rs':h>th?'acc':'run'}
+function sign(i){const S=['😉 Pisquei: tenho manilha','🤨 Sobrancelha: tenho um 3','😮 Beiço: peça truco','🤷 Ombros: estou fraco'];$('#sg').hidden=1;
+if(!G||G.turn===undefined||!G.vira)return;if(G.fer)return toast('Sinal indisponível na Mão de Ferro.');say(0,S[i].slice(0,2));toast('Sinal enviado ao parceiro: '+S[i].slice(3))}
+$('#sg').innerHTML=['😉 Piscar','🤨 Sobrancelha','😮 Beiço','🤷 Ombros'].map((t,i)=>`<button onclick="sign(${i})">${t}</button>`).join('');
+function drop(){if(!G||!G.vira)return;paused=1;$('#cp').textContent='A partida foi pausada e o estado está guardado.';$('#conn').hidden=0}
+function reconnect(){$('#conn').hidden=1;paused=0;resumeFn&&resumeFn();toast(`Reconectado. Estado restaurado: mão ${G.hn}, placar ${G.score[0]} × ${G.score[1]}.`);render()}
+async function endMatch(){const g=G,w=g.score[0]>=12?0:1;log(`Partida encerrada. ${tn(w)} venceu por ${g.score[0]} × ${g.score[1]}.`);
+let v;do{v=await modal(w==0?'🏆 Sua dupla venceu!':'Fim de jogo',`${tn(w)} venceu. Placar final: ${g.score[0]} × ${g.score[1]}.`,[['Nova partida','n','ok'],['Ver histórico','h']]);if(v=='h')drawer('ph')}while(v=='h');
+$('#setup').hidden=0;$('#ph').classList.remove('open');G=null}
+</script></body></html>
