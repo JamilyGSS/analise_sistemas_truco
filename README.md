@@ -1,6 +1,6 @@
-# Truco Paulista em Duplas 
+# Truco Paulista em Duplas
 
-Este repositório reúne a modelagem e a documentação de um jogo de **Truco Paulista** jogado em **duas duplas** (4 jogadores): os casos de uso, as regras de negócio e os requisitos funcionais e não funcionais.
+Este repositório reúne a modelagem, a documentação e a implementação das regras de negócio de um jogo de **Truco Paulista** jogado em **duas duplas** (4 jogadores). O projeto inclui os casos de uso, o diagrama de casos de uso, as regras de negócio e os requisitos funcionais e não funcionais.
 
 ## Sobre o projeto
 
